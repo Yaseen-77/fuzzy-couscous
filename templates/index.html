@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porter Delivery Time Predictor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Yaseen's Porter Delivery Time Predictor</h1>
+        <p class="subtitle">Estimate delivery time using order and marketplace conditions</p>
+    </header>
+
+    <form id="predict-form">
+        <div class="grid">
+
+            <div class="field">
+                <label>Order Placed At</label>
+                <input type="datetime-local" id="created_at" required>
+            </div>
+
+            <div class="field">
+                <label>Market ID</label>
+                <input type="number" id="market_id" value="2" required>
+            </div>
+
+            <div class="field">
+                <label>Store ID</label>
+                <input type="number" id="store_id" value="1583" required>
+            </div>
+
+            <div class="field">
+                <label>Store Category</label>
+                <input type="text" id="store_primary_category" value="burger" required>
+            </div>
+
+            <div class="field">
+                <label>Order Protocol</label>
+                <input type="number" id="order_protocol" value="3" required>
+            </div>
+
+            <div class="field">
+                <label>Subtotal (₹)</label>
+                <input type="number" id="subtotal" value="3200" required>
+            </div>
+
+            <div class="field">
+                <label>Total Items</label>
+                <input type="number" id="total_items" value="4" required>
+            </div>
+
+            <div class="field">
+                <label>Distinct Items</label>
+                <input type="number" id="num_distinct_items" value="3" required>
+            </div>
+
+            <div class="field">
+                <label>Min Item Price (₹)</label>
+                <input type="number" id="min_item_price" value="400" required>
+            </div>
+
+            <div class="field">
+                <label>Max Item Price (₹)</label>
+                <input type="number" id="max_item_price" value="1200" required>
+            </div>
+
+            <div class="field">
+                <label>Onshift Partners</label>
+                <input type="number" id="total_onshift_partners" value="12" required>
+            </div>
+
+            <div class="field">
+                <label>Busy Partners</label>
+                <input type="number" id="total_busy_partners" value="9" required>
+            </div>
+
+            <div class="field">
+                <label>Outstanding Orders</label>
+                <input type="number" id="total_outstanding_orders" value="15" required>
+            </div>
+
+        </div>
+
+        <button type="submit" id="predict-btn">Predict Delivery Time</button>
+    </form>
+
+    <div id="result" class="result hidden">
+        <div class="result-label">Estimated Delivery Time</div>
+        <div class="result-value" id="result-value">-- min</div>
+    </div>
+
+    <div id="error" class="error hidden"></div>
+</div>
+
+<script>
+const form = document.getElementById("predict-form");
+const resultBox = document.getElementById("result");
+const resultValue = document.getElementById("result-value");
+const errorBox = document.getElementById("error");
+const btn = document.getElementById("predict-btn");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    resultBox.classList.add("hidden");
+    errorBox.classList.add("hidden");
+    btn.disabled = true;
+    btn.textContent = "Predicting...";
+
+    const payload = {
+        created_at: document.getElementById("created_at").value,
+        market_id: Number(document.getElementById("market_id").value),
+        store_id: Number(document.getElementById("store_id").value),
+        store_primary_category: document.getElementById("store_primary_category").value,
+        order_protocol: Number(document.getElementById("order_protocol").value),
+        subtotal: Number(document.getElementById("subtotal").value),
+        total_items: Number(document.getElementById("total_items").value),
+        num_distinct_items: Number(document.getElementById("num_distinct_items").value),
+        min_item_price: Number(document.getElementById("min_item_price").value),
+        max_item_price: Number(document.getElementById("max_item_price").value),
+        total_onshift_partners: Number(document.getElementById("total_onshift_partners").value),
+        total_busy_partners: Number(document.getElementById("total_busy_partners").value),
+        total_outstanding_orders: Number(document.getElementById("total_outstanding_orders").value)
+    };
+
+    try {
+        const res = await fetch("/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || "Prediction failed");
+
+        resultValue.textContent = data.predicted_delivery_time_minutes + " min";
+        resultBox.classList.remove("hidden");
+    } catch (err) {
+        errorBox.textContent = err.message;
+        errorBox.classList.remove("hidden");
+    } finally {
+        btn.disabled = false;
+        btn.textContent = "Predict Delivery Time";
+    }
+});
+</script>
+
+</body>
+</html>

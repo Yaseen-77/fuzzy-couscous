@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Yaseen Shaikh, backend and DevOps learner.">
+    <title>Yaseen Shaikh | Backend & DevOps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink:#111827; --muted:#657084; --line:#dfe3e9; --lime:#c7ff4a; --paper:#f8f8f5; --card:#fff; }
+        * { box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { margin:0; color:var(--ink); background:var(--paper); font-family:Outfit,Arial,sans-serif; }
+        .page-shell { width:min(1120px, calc(100% - 40px)); margin:auto; }
+        .nav { height:92px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); }
+        .brand { color:var(--ink); text-decoration:none; font:700 1.35rem 'DM Mono',monospace; letter-spacing:-.12em; }.brand span { color:#78a900; }
+        .nav-link { color:var(--muted); font:500 .88rem 'DM Mono',monospace; text-decoration:none; transition:color .2s; }.nav-link:hover { color:var(--ink); }
+        .hero { min-height:510px; padding:84px 0 70px; position:relative; }.availability { display:inline-flex; align-items:center; gap:8px; padding:7px 11px; background:#ebf9cb; border-radius:99px; font:500 .72rem 'DM Mono',monospace; }.availability i { width:7px; height:7px; background:#5a9200; border-radius:50%; }
+        .eyebrow,.section-label,.project-type { color:var(--muted); font:500 .72rem 'DM Mono',monospace; letter-spacing:.05em; }.eyebrow { margin:44px 0 7px; }
+        h1,h2,h3,p { margin-top:0; } h1 { max-width:720px; margin-bottom:25px; font-size:clamp(4rem, 10vw, 7.8rem); line-height:.82; letter-spacing:-.075em; } em { color:#78a900; font-style:normal; }
+        .hero-copy { width:min(500px,100%); color:var(--muted); font-size:1.15rem; line-height:1.65; }.hero-actions { display:flex; gap:12px; margin-top:32px; }.button { display:inline-flex; align-items:center; gap:18px; padding:13px 17px; border:1px solid var(--ink); text-decoration:none; font:500 .82rem 'DM Mono',monospace; transition:transform .2s,background .2s; }.button:hover { transform:translateY(-3px); }.primary { color:var(--ink); background:var(--lime); }.secondary { color:var(--ink); }
+        .section { padding:78px 0; border-top:1px solid var(--line); }.intro-grid { display:grid; grid-template-columns:27% 1fr; gap:30px; }.intro-content { max-width:710px; }.intro-content h2,.learning h2 { font-size:clamp(2.1rem,4vw,3.75rem); line-height:1.03; letter-spacing:-.055em; margin-bottom:26px; }.intro-content p,.learning p { color:var(--muted); max-width:650px; font-size:1.05rem; line-height:1.7; }.intro-content p + p { margin-top:15px; }
+        .skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:30px; }.skill-card { min-height:190px; padding:25px; border:1px solid var(--line); background:var(--card); transition:transform .2s,box-shadow .2s; }.skill-card:hover { transform:translateY(-4px); box-shadow:7px 7px 0 var(--lime); }.skill-card span { color:#83aa23; font:.75rem 'DM Mono',monospace; }.skill-card h3 { margin:42px 0 8px; font-size:1.25rem; letter-spacing:-.03em; }.skill-card p { margin:0; color:var(--muted); line-height:1.55; }
+        .projects-heading { display:flex; align-items:baseline; justify-content:space-between; }.projects-heading > p:last-child { color:var(--muted); }.projects-list { margin-top:25px; }.project { display:grid; grid-template-columns:12% 1fr; gap:16px; padding:33px 22px; border-top:1px solid var(--line); transition:background .2s; }.project:last-child { border-bottom:1px solid var(--line); }.project:hover { background:#eef6d9; }.project-number { color:#83aa23; font:.75rem 'DM Mono',monospace; }.project-type { margin-bottom:10px; }.project h3 { margin-bottom:10px; font-size:clamp(1.45rem,3vw,2.1rem); letter-spacing:-.04em; }.project h3 + p { max-width:650px; color:var(--muted); line-height:1.6; }.tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:16px; }.tags span { padding:5px 8px; border:1px solid #cfd8bc; font:.67rem 'DM Mono',monospace; }
+        .learning { display:grid; grid-template-columns:27% 1fr; gap:30px; padding:78px 0; }.learning h2 { max-width:760px; }.learning .section-label { margin-top:10px; } footer { display:flex; justify-content:space-between; padding:25px 0 35px; border-top:1px solid var(--line); color:var(--muted); font:.68rem 'DM Mono',monospace; }
+        @media (max-width:640px) { .page-shell{width:min(100% - 28px,1120px)} .nav{height:74px}.hero{min-height:480px;padding-top:57px}.intro-grid,.learning{grid-template-columns:1fr;gap:22px}.section,.learning{padding:56px 0}.skills-grid{grid-template-columns:1fr}.project{grid-template-columns:45px 1fr;padding:28px 4px}.projects-heading{display:block}.projects-heading>p:last-child{margin-top:12px}footer{gap:16px;flex-direction:column}.hero-actions{flex-wrap:wrap} }
+    </style>
+</head>
+<body>
+    <main class="page-shell">
+        <nav class="nav">
+            <a class="brand" href="#top">YS<span>.</span></a>
+            <a class="nav-link" href="/">← Delivery Predictor</a>
+        </nav>
+
+        <section class="hero" id="top">
+            <div class="availability"><i></i> Open to learn & collaborate</div>
+            <p class="eyebrow">Hello, I’m</p>
+            <h1>Yaseen<br><em>Shaikh.</em></h1>
+            <p class="hero-copy">B.Tech Computer Science student building reliable backend systems and learning the infrastructure that keeps them running.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="button primary">View my work <span>↓</span></a>
+                <a href="mailto:your-email@example.com" class="button secondary">Get in touch</a>
+            </div>
+        </section>
+
+        <section class="section intro-grid">
+            <div><p class="section-label">01 / ABOUT ME</p></div>
+            <div class="intro-content">
+                <h2>Curious about what happens <em>under the hood.</em></h2>
+                <p>I’m focused on strengthening my backend engineering fundamentals—from HTTP and caching to databases, Linux, and deployment. I enjoy breaking down how systems communicate, scale, and stay dependable.</p>
+                <p>Right now, I’m building practical backend projects, learning DevOps foundations, and exploring machine learning through small data-analysis experiments.</p>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <p class="section-label">02 / TOOLKIT</p>
+            <div class="skills-grid">
+                <article class="skill-card"><span>01</span><h3>Languages</h3><p>Python · JavaScript · HTML · CSS · SQL</p></article>
+                <article class="skill-card"><span>02</span><h3>Backend & Web</h3><p>Flask · REST APIs · HTTP · JSON · Caching</p></article>
+                <article class="skill-card"><span>03</span><h3>Data & ML</h3><p>Pandas · NumPy · Scikit-learn · TensorFlow</p></article>
+                <article class="skill-card"><span>04</span><h3>DevOps & Systems</h3><p>Linux · Git & GitHub · Docker · Bash · Deployment basics</p></article>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="projects-heading"><p class="section-label">03 / FEATURED WORK</p><p>Learning by building.</p></div>
+            <div class="projects-list">
+                <article class="project featured">
+                    <div class="project-number">01</div>
+                    <div><p class="project-type">Backend systems / In progress</p><h3>HTTP Caching Proxy</h3><p>Exploring request forwarding, response caching, TTL expiry, and LRU eviction to understand performance-oriented backend design.</p><div class="tags"><span>Python</span><span>HTTP</span><span>Caching</span><span>Linux</span></div></div>
+                </article>
+                <article class="project">
+                    <div class="project-number">02</div>
+                    <div><p class="project-type">Machine learning / Web</p><h3>Delivery Time Predictor</h3><p>A Flask application that uses a trained ML model to estimate food delivery time from order and marketplace conditions.</p><div class="tags"><span>Python</span><span>Flask</span><span>TensorFlow</span><span>Pandas</span></div></div>
+                </article>
+                <article class="project">
+                    <div class="project-number">03</div>
+                    <div><p class="project-type">Frontend</p><h3>Weather App & Shortcut Dashboard</h3><p>Responsive browser projects built around public APIs and a streamlined way to access frequently used links.</p><div class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>APIs</span></div></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="learning">
+            <p class="section-label">NOW EXPLORING</p>
+            <div><h2>Linux administration, containerization, CI/CD, and cloud deployment.</h2><p>Building the foundation to take an application from local code to a dependable running service.</p></div>
+        </section>
+
+        <footer><span>© 2026 Yaseen Shaikh</span><span>Built with curiosity &amp; lots of terminal tabs.</span></footer>
+    </main>
+</body>
+</html>
