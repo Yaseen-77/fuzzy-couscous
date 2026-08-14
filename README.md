@@ -1,11 +1,10 @@
-
 # Porter Delivery Time Predictor
 
 A neural network-based regression model that predicts intra-city delivery time (in minutes) for Porter orders, deployed as a Flask web application with a styled HTML frontend.
 
 ## 🚀 Live Demo
 
-**[porter-delivery-predictor-git-main-yaseen-sk.vercel.app](https://porter-delivery-predictor-git-main-yaseen-sk.vercel.app/)**
+**[porter-delivery-predictor-czq8eym5s-yaseen-sk.vercel.app](https://porter-delivery-predictor-git-main-yaseen-sk.vercel.app/)**
 
 > ⏳ **Note:** This is deployed on a free-tier serverless host, so the first request after a period of inactivity may take **~5–10 seconds** to respond while the server "cold starts." Subsequent requests will be fast. If the page looks unresponsive on first load, just wait a few seconds before retrying.
 

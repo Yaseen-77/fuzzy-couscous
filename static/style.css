@@ -128,3 +128,74 @@ button:disabled {
 .hidden {
     display: none;
 }
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 12px;
+        align-items: flex-start;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 28px 20px;
+        border-radius: 14px;
+    }
+
+    header {
+        margin-bottom: 25px;
+    }
+
+    header h1 {
+        font-size: 26px;
+        line-height: 1.25;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .field {
+        width: 100%;
+    }
+
+    .field input {
+        width: 100%;
+        min-width: 0;
+        font-size: 16px;
+        padding: 11px 12px;
+    }
+
+    button {
+        margin-top: 24px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 24px 16px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .grid {
+        gap: 15px;
+    }
+}
